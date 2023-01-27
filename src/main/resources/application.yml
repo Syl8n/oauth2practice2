@@ -3,10 +3,6 @@ spring:
     include: oauth
 
   datasource:
-#    username: sa
-#    password:
-#    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
-#    driver-class-name: org.h2.Driver
     username: root
     password: 1
     url: jdbc:mariadb://localhost:3306/test
@@ -14,5 +10,14 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  security:
+    oauth2:
+      client:
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
 
 server.servlet.encoding.force-response: true
