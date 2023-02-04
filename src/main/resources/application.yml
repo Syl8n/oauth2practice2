@@ -3,13 +3,15 @@ spring:
     include: oauth
 
   datasource:
-    username: root
-    password: 1
-    url: jdbc:mariadb://localhost:3306/test
-    driver-class-name: org.mariadb.jdbc.Driver
+    username: sa
+    password:
+    url: jdbc:h2:mem:test;MODE=MySQL;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
   jpa:
+    defer-datasource-initialization: true
+    database-platform: H2
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
   security:
     oauth2:
       client:
@@ -19,5 +21,8 @@ spring:
             token-uri: https://kauth.kakao.com/oauth/token
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
+  h2:
+    console:
+      enabled: true
 
 server.servlet.encoding.force-response: true

@@ -1,5 +1,0 @@
-server:
-  port: 5731
-  servlet:
-    encoding:
-      force-response: true
